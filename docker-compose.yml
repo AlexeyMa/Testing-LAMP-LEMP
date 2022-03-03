@@ -2,8 +2,7 @@
 version: '3'
 
 services:
-
-  mysql:
+ mysql:
     image: mariadb
     volumes:
       - ./data/mysql:/var/lib/mysql
@@ -15,7 +14,7 @@ services:
       MYSQL_PASSWORD: 123321
     restart: always
 
-  wordpress:
+ wordpress:
     image: wordpress:php7.4-fpm-alpine
     volumes:
       - ./data/html:/var/www/html
@@ -32,7 +31,7 @@ services:
       - mysql
     restart: always
 
-  nginx:
+ nginx:
     image: nginx:latest
     volumes:
       - ./nginx:/etc/nginx/conf.d
@@ -43,7 +42,7 @@ services:
     links:
       - wordpress
 
-  pma:
+ pma:
     image: phpmyadmin/phpmyadmin
     restart: always
     links:
